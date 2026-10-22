@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+# Node
+node_modules/
+dist/
+playwright-report/
+test-results/
+# Office lock files (Excel creates ~$name.xlsx while a workbook is open)
+~$*
+
+# Secrets and local config
+.env
+.env.local
+*.local
+# Data: commit manifests and the small subset, never the full Lichess dump
+*.csv.zst
+data/raw/
