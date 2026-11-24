@@ -1,6 +1,7 @@
 """Integration-test fixtures. These run against a REAL Postgres (SKIP LOCKED, JSONB and ON CONFLICT
 do not exist in SQLite). Start it with:  docker compose up -d db
 The tests use a separate database, chesslab_test, so they never touch your development data."""
+
 import os
 
 os.environ.setdefault("DATABASE_URL", "postgresql+psycopg://chesslab:chesslab@localhost:5433/chesslab_test")
@@ -65,10 +66,23 @@ def fork_puzzle():
     from app.db import SessionLocal
 
     with SessionLocal() as db:
-        db.add(Puzzle(id="TEST1", source_fen="4k3/r7/8/3N4/8/8/8/4K3 b - - 0 1", setup_uci="a7a8",
-                      playable_fen="r3k3/8/8/3N4/8/8/8/4K3 w - - 1 2", solution_uci=["d5c7", "e8d7", "c7a8"],
-                      rating=1400, rating_deviation=75, popularity=95, nb_plays=1000, themes=["fork"],
-                      concept="knight_fork", pool="practice", game_url="https://lichess.org/test",
-                      dataset_version="test"))
+        db.add(
+            Puzzle(
+                id="TEST1",
+                source_fen="4k3/r7/8/3N4/8/8/8/4K3 b - - 0 1",
+                setup_uci="a7a8",
+                playable_fen="r3k3/8/8/3N4/8/8/8/4K3 w - - 1 2",
+                solution_uci=["d5c7", "e8d7", "c7a8"],
+                rating=1400,
+                rating_deviation=75,
+                popularity=95,
+                nb_plays=1000,
+                themes=["fork"],
+                concept="knight_fork",
+                pool="practice",
+                game_url="https://lichess.org/test",
+                dataset_version="test",
+            )
+        )
         db.commit()
     return "TEST1"
