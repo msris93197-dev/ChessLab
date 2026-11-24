@@ -24,8 +24,12 @@ class MeOut(BaseModel):
     expires_at: datetime
 
 
-@router.post("/sessions", response_model=SessionOut, status_code=201,
-             dependencies=[Depends(limit("sessions", max_calls=10, per_seconds=60))])
+@router.post(
+    "/sessions",
+    response_model=SessionOut,
+    status_code=201,
+    dependencies=[Depends(limit("sessions", max_calls=10, per_seconds=60))],
+)
 def create_session(db: Session = Depends(get_db)) -> SessionOut:
     token = new_token()
     visitor = Visitor(token_hash=hash_token(token), expires_at=expiry_from(datetime.now(timezone.utc)))
