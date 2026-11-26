@@ -3,6 +3,7 @@
 The frontend switches on `code` (stable, machine-readable); `message` is for humans.
 Tracebacks are logged on the server and never sent to the browser.
 """
+
 import logging
 
 from fastapi import Request

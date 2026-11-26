@@ -1,4 +1,5 @@
 """Guest credentials: a random opaque token the browser keeps; the database stores only its hash."""
+
 import hashlib
 import secrets
 from datetime import datetime, timedelta, timezone

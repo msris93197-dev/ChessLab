@@ -3,6 +3,7 @@
 Good enough for one API instance. If you ever run several instances, move the counters
 to Postgres or Redis, because each process would otherwise keep its own count.
 """
+
 import time
 from collections import defaultdict, deque
 

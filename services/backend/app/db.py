@@ -1,4 +1,5 @@
 """Database engine and per-request sessions."""
+
 from collections.abc import Iterator
 
 from sqlalchemy import create_engine
